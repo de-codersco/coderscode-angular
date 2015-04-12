@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/de-codersco/coderscode-angular.svg)](https://travis-ci.org/de-codersco/coderscode-angular)
+
 # coderscode-angular
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
