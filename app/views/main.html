@@ -21,6 +21,13 @@
   <h4>Karma</h4>
   <p>Spectacular Test Runner for JavaScript.</p>
 
-  <p>--</p>
-  <p>{{user.username}}, {{user.firstname}}, {{user.lastname}}</p>
+  <div ng-if="renderUser">
+    <p>--</p>
+    <p>{{user.username}}, {{user.firstname}}, {{user.lastname}}</p>
+  </div>
+  <div ng-if="!renderUser">
+    <p>--</p>
+    <p>...</p>
+  </div>
+
 </div>
