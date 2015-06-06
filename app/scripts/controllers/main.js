@@ -16,12 +16,16 @@ angular.module('coderscodeAngularApp')
     ];
 
     var url = 'http://' + $location.host() + ':9000/api/user?callback=JSON_CALLBACK';
+    /*
     $http.jsonp(url)
       .success(function(data){
         $scope.renderUser = true;
         $scope.user = data;
       })
-      .error(function(data){
+      .error(function(){
         $scope.renderUser = false;
       });
+    */
+    console.log(url);
+    $scope.renderUser = false;
   });

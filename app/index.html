@@ -35,12 +35,14 @@
             <a class="navbar-brand" href="#/">coderscodeAngular</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" data-ng-controller="UserCtrl">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
+              <li><a href="#/">Home</a></li><!-- class="active" -->
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li data-ng-show="token"><a data-ng-href="#/profile">Profile</a></li>
+              <li data-ng-hide="token"><a data-ng-href="#/signin">Signin</a></li>
+              <li data-ng-show="token"><a ng-click="logout()">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -79,6 +81,7 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -86,6 +89,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/services/user.js"></script>
         <!-- endbuild -->
 </body>
 </html>

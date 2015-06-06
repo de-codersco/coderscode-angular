@@ -14,19 +14,60 @@ angular
     'ngMessages',
     'ngResource',
     'ngRoute',
-    'ngSanitize'
+    'ngSanitize',
+    'ngStorage'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'UserCtrl' // MainCtrl
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+
+      .when('/profile', {
+          templateUrl: 'views/profile.html',
+          controller: 'UserCtrl'
+      })
+      .when('/signin', {
+          templateUrl: 'views/signin.html',
+          controller: 'UserCtrl'
+      })
+      .when('/signup', {
+          templateUrl: 'views/signup.html',
+          controller: 'UserCtrl'
+      })
+      .when('/me', {
+          templateUrl: 'views/me.html',
+          controller: 'UserCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
+      });
+
+
+
+      $httpProvider.interceptors.push(function($q, $location, $localStorage) {
+        return {
+          'request': function (config) {
+            config.headers = config.headers || {};
+            if ($localStorage.token) {
+              console.log('interceptor::request ' + $localStorage.token);
+              config.headers.Authorization = 'Bearer ' + $localStorage.token;
+            }
+            return config;
+          },
+          'responseError': function(response) {
+            if(response.status === 401 || response.status === 403) {
+              console.log('interceptor::responseError ' + response.status);
+              $location.path('/signin');
+            }
+            return $q.reject(response);
+          }
+        };
       });
   });
