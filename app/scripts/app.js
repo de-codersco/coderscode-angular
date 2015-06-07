@@ -36,6 +36,14 @@ angular
           templateUrl: 'views/signin.html',
           controller: 'UserCtrl'
       })
+      .when('/github', {
+          templateUrl: 'views/github.html',
+          controller: 'UserCtrl'
+      })
+      .when('/facebook', {
+          templateUrl: 'views/facebook.html',
+          controller: 'UserCtrl'
+      })
       .when('/signup', {
           templateUrl: 'views/signup.html',
           controller: 'UserCtrl'

@@ -42,6 +42,8 @@
               <li><a ng-href="#/about">About</a></li>
               <li data-ng-show="token"><a data-ng-href="#/profile">Profile</a></li>
               <li data-ng-hide="token"><a data-ng-href="#/signin">Signin</a></li>
+              <li data-ng-hide="token"><a data-ng-href="#/github">Signin GitHub</a></li>
+              <li data-ng-hide="token"><a data-ng-href="#/facebook">Signin Facebook</a></li>
               <li data-ng-show="token"><a ng-click="logout()">Logout</a></li>
             </ul>
           </div>
