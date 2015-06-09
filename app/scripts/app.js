@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngStorage'
   ])
-  .config(function ($routeProvider, $httpProvider) {
+  .config(function ($routeProvider, $httpProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -52,6 +52,10 @@ angular
           templateUrl: 'views/me.html',
           controller: 'UserCtrl'
       })
+      .when('/githubCallback', {
+          templateUrl: 'views/githubCallback.html',
+          controller: 'GitHubCallbackCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'
@@ -77,5 +81,12 @@ angular
             return $q.reject(response);
           }
         };
+      });
+
+
+
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: true
       });
   });
