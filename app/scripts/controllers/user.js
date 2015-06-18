@@ -5,7 +5,7 @@
 // ['$rootScope', '$scope', '$location', '$localStorage', 'User',
 
 angular.module('coderscodeAngularApp')
-    .controller('UserCtrl', function($rootScope, $scope, $location, $localStorage, User) {
+    .controller('UserCtrl', function($rootScope, $scope, $location, $localStorage, User, $http) {
 
         $scope.signin = function() {
             console.log('signin');
@@ -72,5 +72,16 @@ angular.module('coderscodeAngularApp')
           'AngularJS',
           'Karma'
         ];
-        $scope.renderUser = false;
+
+        //$scope.renderUser = false;
+        var url = 'http://' + $location.host() + ':9000/api/user';
+
+        $http.get(url) // jsonp
+          .success(function(data){
+            $scope.renderUser = true;
+            $scope.user = data;
+          })
+          .error(function(){
+            $scope.renderUser = false;
+          });
     });
