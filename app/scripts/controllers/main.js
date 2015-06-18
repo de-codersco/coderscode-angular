@@ -18,7 +18,7 @@ angular.module('coderscodeAngularApp')
     //var url = 'http://' + $location.host() + ':9000/api/user?callback=JSON_CALLBACK';
     var url = 'http://' + $location.host() + ':9000/api/user';
 
-    $http.json(url) // jsonp
+    $http.get(url) // jsonp
       .success(function(data){
         $scope.renderUser = true;
         $scope.user = data;
